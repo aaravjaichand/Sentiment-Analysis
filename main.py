@@ -2,7 +2,11 @@ import pandas as pd
 import numpy as np
 from tqdm import tqdm
 from pathlib import Path
+import matplotlib.pyplot as plt
+import torch
+from transformers import pipeline, AutoTokenizer, AutoModelForSequenceClassification, AutoModel
 
+categorizations = ["Positive", "Negative"]
 
 def getData():
 
@@ -32,6 +36,65 @@ def getData():
         
     return inputs, targets
 
-inputs, targets = getData()
 
-print(inputs[123], targets[123])
+def sentence_transformers():
+    inputs, targets = getData()
+
+    inputs, targets = inputs.tolist(), targets.tolist()
+
+    def batches(layer):
+        with torch.inference_mode():
+            tokenizer = AutoTokenizer.from_pretrained("sentence-transformers/all-MiniLM-L6-v2")
+            model = AutoModel.from_pretrained("sentence-transformers/all-MiniLM-L6-v2")
+            
+            last_hidden_states = model(**tokenizer(inputs, return_tensors='pt', padding=True, truncation=True), output_hidden_states=True).hidden_states
+            last_hidden_states_labels = model(**tokenizer(categorizations, return_tensors='pt', padding=True, truncation=True), output_hidden_states=True).hidden_states
+
+        predictions = (last_hidden_states_labels[layer].mean(axis=1) @ last_hidden_states[layer].mean(axis=1).T).softmax(0).argmax(axis=0)
+
+        # Calculate accuracy
+        correct_predictions = (predictions == torch.tensor(targets)).sum().item()
+        total_predictions = len(targets)
+        accuracy = correct_predictions / total_predictions
+
+        print(f"Accuracy: {accuracy * 100:.2f}%")
+
+    def graph():
+        with torch.inference_mode():
+            
+            model = AutoModel.from_pretrained("sentence-transformers/all-MiniLM-L6-v2")
+            tokenizer = AutoTokenizer.from_pretrained("sentence-transformers/all-MiniLM-L6-v2")
+            last_hidden_states = model(**tokenizer(headlines, return_tensors='pt', padding=True, truncation=True), output_hidden_states=True).hidden_states
+            last_hidden_states_labels = model(**tokenizer(acceptedCats, return_tensors='pt', padding=True, truncation=True), output_hidden_states=True).hidden_states
+
+        bestLayer = -1
+        bestAcc = -1
+
+        listAccuracies = []
+
+        for i in tqdm(range(len(last_hidden_states)), desc= "Finding optimal layer..."):
+            predictions = (last_hidden_states_labels[i].mean(axis=1) @ last_hidden_states[i].mean(axis=1).T).softmax(0).argmax(axis=0)
+            prediction_strings = np.array(acceptedCats)[np.array(predictions)]
+            targets = filteredTargets[: samples]
+            acc = (prediction_strings == targets).mean() * 100
+            if acc > bestAcc:
+                bestAcc = acc
+                bestLayer = i
+            listAccuracies.append(acc)
+        plt.xlabel("Layer used by model")
+        plt.ylabel("Accuracy")
+        plt.plot(listAccuracies)   
+        plt.show()
+
+        return bestLayer, bestAcc
+    
+    funcToUse = int(input("Would you like to find the optimal layer(1) to use or run on one layer(2)? My choice: "))
+    
+    if funcToUse == 2:
+        batches(int(input("What layer (0-7): ")))
+    else:
+        bestLayer, bestAcc = graph()
+        print("Optimal layer:", bestLayer)
+        print("Accuracy with optimal layer: ", bestAcc)
+
+sentence_transformers()
