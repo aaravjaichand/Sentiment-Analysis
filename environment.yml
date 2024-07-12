@@ -5,6 +5,9 @@ channels:
 dependencies:  
 - pandas
 - numpy
+- transformers
+- sklearn
+- torch
 - pip
 - tqdm
 - python=3.10  
