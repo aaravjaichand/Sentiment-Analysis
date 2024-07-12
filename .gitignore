@@ -387,3 +387,4 @@ $RECYCLE.BIN/
 *.csv
 
 *.npz
+*.out

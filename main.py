@@ -20,15 +20,17 @@ def get_data():
 
         print(identity)
 
-        string = "Do you want to use this dataset above ^^^: "
+        string = "Do you want to use this dataset above? : "
         
         sc = input(string)
 
         if sc == "Yes" or sc == "yes" or sc == "y" or sc == "Y":
             inputs, targets = data["inputs"], data["targets"]
-            print("Setup complete. Program running.")
+            print("File Setup Complete!")
         else:
-            print("Restarting file setup.")
+            print("Restarting File Setup.")
+            if userFile.exists():
+                userFile.unlink()
             while True:
                 fileName = input("Enter .csv file name with file extension: ")
 
@@ -88,14 +90,24 @@ def main():
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
         
 
-        sklearn_model = train_sklearn_model(X_train, y_train)
-        evaluate_sklearn_model(sklearn_model, X_test, y_test)
+        # sklearn_model = train_sklearn_model(X_train, y_train)
+        # evaluate_sklearn_model(sklearn_model, X_test, y_test)
         
         
         tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased-finetuned-sst-2-english")
         transformers_model = AutoModelForSequenceClassification.from_pretrained("distilbert-base-uncased-finetuned-sst-2-english")
-        evaluate_transformers_model(transformers_model, tokenizer, inputs, targets)
+        evaluate_transformers_model(transformers_model, tokenizer, inputs, targets, False)
 
+
+        print("Program execution complete.")
+
+        fileOutput = evaluate_transformers_model(transformers_model, tokenizer, inputs, targets, True)
+
+        fout = open("output.out", "w")
+        for foutput in fileOutput:
+
+            print(*foutput, file=fout)
+        
 
 
 if __name__ == "__main__":
