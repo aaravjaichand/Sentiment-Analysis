@@ -10,6 +10,11 @@ from models.transformers_model import evaluate_transformers_model, singleUse
 categorizations = ["This review has a positive tone", "This review has a negative tone"]
 categorizationsDict = {1: "Positive", 0: "Negative"}
 
+
+
+if Path("output.out").exists():
+    Path("output.out").unlink()
+
 def get_data():
     userFile = Path("userfile.npz")
     
@@ -90,8 +95,8 @@ def main():
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
         
 
-        # sklearn_model = train_sklearn_model(X_train, y_train)
-        # evaluate_sklearn_model(sklearn_model, X_test, y_test)
+        sklearn_model = train_sklearn_model(X_train, y_train)
+        evaluate_sklearn_model(sklearn_model, X_test, y_test)
         
         
         tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased-finetuned-sst-2-english")
