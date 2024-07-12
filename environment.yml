@@ -6,8 +6,9 @@ dependencies:
 - pandas
 - numpy
 - transformers
-- sklearn
-- torch
+- scikit-learn
+- python=3.10
 - pip
-- tqdm
-- python=3.10  
+- pip:
+  - torch
+  - tqdm
