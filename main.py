@@ -42,7 +42,7 @@ def get_data():
                 inputs = dataset[text].tolist() 
                 colTar = input("What is the exact name (case senstive) of the column with the target: ")
                 targets = dataset[colTar].tolist() 
-                np.savez(userFile, inputs=inputs, targets=targets, identity=str(identity))w
+                np.savez(userFile, inputs=inputs, targets=targets, identity=str(identity))
 
                 print("Dataset sucessfully updated. Running code...")
                 return inputs, targets
