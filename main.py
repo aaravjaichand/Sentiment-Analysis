@@ -33,6 +33,21 @@ def get_data():
             inputs, targets = data["inputs"], data["targets"]
             print("File Setup Complete!")
         else:
+
+            refresh = input("Do you want to refresh the data in this dataset?")
+
+            if refresh == "Yes" or refresh == "yes" or refresh == "y" or refresh == "Y":
+                dataset = pd.read_csv(str(identity))
+                text = input("What is the exact name (case senstive) of the column with the text (reviews, posts, whatever): ")
+                inputs = dataset[text].tolist() 
+                colTar = input("What is the exact name (case senstive) of the column with the target: ")
+                targets = dataset[colTar].tolist() 
+                np.savez(userFile, inputs=inputs, targets=targets, identity=str(identity))w
+
+                print("Dataset sucessfully updated. Running code...")
+                return inputs, targets
+
+
             print("Restarting File Setup.")
             if userFile.exists():
                 userFile.unlink()
