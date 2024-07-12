@@ -1,4 +1,4 @@
-name: sentiment_analysis
+name: sentiment_analysis_environment
 channels:  
 - conda-forge  
 - defaults  
