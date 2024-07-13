@@ -1,7 +1,5 @@
 # Sentiment-Analysis
 
-From [Aarav Jaichand](https://github.com/aaravjaichand)
-
 ## Setup Instructions:
 - Install [Python](https://www.python.org) version 3.8 or above
 
@@ -78,3 +76,10 @@ Sanh, V., Debut, L., Chaumond, J., & Wolf, T. (2020, February 29). DistilBERT, a
 Dataset: [https://www.kaggle.com/datasets/mohidabdulrehman/vs-sentiment-analysis](https://www.kaggle.com/datasets/mohidabdulrehman/vs-sentiment-analysis)
 
 
+## Profile:
+
+See my profile for more repositories like this [here](https://github.com/aaravjaichand)
+
+
+
+# Enjoy!
