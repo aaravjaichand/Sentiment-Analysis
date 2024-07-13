@@ -71,8 +71,6 @@ Below is an example of how to use this program for the first time with this data
 | **Support**      | 500     | 500     | 1000          | 1000             |
 
 
-Stay tuned for more upcoming changes.
-
 ## References:
 Sanh, V., Debut, L., Chaumond, J., & Wolf, T. (2020, February 29). DistilBERT, a distilled version of BERT: smaller, faster, cheaper and lighter. ArXiv.org. [https://doi.org/10.48550/arXiv.1910.01108)](https://doi.org/10.48550/arXiv.1910.01108)
 ‌
