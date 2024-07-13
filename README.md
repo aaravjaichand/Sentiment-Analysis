@@ -78,6 +78,6 @@ Sanh, V., Debut, L., Chaumond, J., & Wolf, T. (2020, February 29). DistilBERT, a
 ‌
 
 
-Dataset (No DOI, so link is here): [https://www.kaggle.com/datasets/mohidabdulrehman/vs-sentiment-analysis](https://www.kaggle.com/datasets/mohidabdulrehman/vs-sentiment-analysis)
+Dataset: [https://www.kaggle.com/datasets/mohidabdulrehman/vs-sentiment-analysis](https://www.kaggle.com/datasets/mohidabdulrehman/vs-sentiment-analysis)
 
 
