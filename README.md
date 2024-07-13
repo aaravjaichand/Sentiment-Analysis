@@ -1,4 +1,4 @@
-# Sentiment Analysis Project
+# Sentiment-Analysis
 
 From [Aarav Jaichand](https://github.com/aaravjaichand)
 
