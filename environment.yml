@@ -1,14 +1,15 @@
 name: sentiment_analysis_environment
-channels:  
-- conda-forge  
-- defaults  
-dependencies:  
-- pandas
-- numpy
-- transformers
-- scikit-learn
-- python=3.10
-- pip
-- pip:
-  - torch
-  - tqdm
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - pandas
+  - numpy=1.21 
+  - transformers
+  - scikit-learn
+  - python=3.10
+  - pip
+  - pip:
+    - numpy>=1.17,<2.0
+    - torch
+    - tqdm
