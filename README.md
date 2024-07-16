@@ -5,10 +5,11 @@
 
 #### Setup Python Environment:
 
-- Install Conda using `pip install conda`
-- Install dependencies from the `environment.yml` file using `conda env create -f environment.yml`. This creates an environment called `sentiment_analysis_environment`.
-- Activate the environment using `conda activate sentiment_analysis_environment` or by going into settings for your code editor and selecting `sentiment_analysis_environment` from there, if your code editor has that feature. 
-
+- Install Miniconda or Anaconda:
+  - Download and install Miniconda from [here](https://docs.conda.io/en/latest/miniconda.html).
+  - Follow the installation instructions for your operating system.
+  
+- After installing Conda, create a new environment and install dependencies from the `environment.yml` file using `conda env create -f environment.yml`
 
 #### Dataset:
 
