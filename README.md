@@ -6,10 +6,15 @@
 #### Setup Python Environment:
 
 - Install Miniconda or Anaconda:
-  - Download and install Miniconda from [here](https://docs.conda.io/en/latest/miniconda.html).
+  - Download and install Miniconda from [here](https://docs.conda.io/en/latest/miniconda.html) (if not already).
   - Follow the installation instructions for your operating system.
   
-- After installing Conda, create a new environment and install dependencies from the `environment.yml` file using `conda env create -f environment.yml`
+- After installing Conda, create a new environment from `environment.yml` using `conda env create -f environment.yml`
+- Follow the instructions in your terminal carefully
+
+(If using visual studio code, make sure that you have the environment selected when using `>Python: Select Interpreter')
+
+That's it for setup.
 
 #### Dataset:
 
@@ -45,28 +50,13 @@ Below is an example of how to use this program for the first time with this data
 
 ## Sklearn Model Accuracy and Performance Metrics:
 
-
-
 **Model Accuracy:** 82.00%
-
-| Metric           | Class 0 | Class 1 | Macro Average | Weighted Average |
-|------------------|---------|---------|---------------|------------------|
-| **Precision**    | 0.78    | 0.86    | 0.82          | 0.82             |
-| **Recall**       | 0.86    | 0.78    | 0.82          | 0.82             |
-| **F1-Score**     | 0.82    | 0.82    | 0.82          | 0.82             |
-| **Support**      | 96      | 104     | 200           | 200              |
 
 
 ## Distilbert Model Accuracy and Performance Metrics:
 
 **Model Accuracy:** 92.40%
 
-| Metric           | Class 0 | Class 1 | Macro Average | Weighted Average |
-|------------------|---------|---------|---------------|------------------|
-| **Precision**    | 0.93    | 0.92    | 0.92          | 0.92             |
-| **Recall**       | 0.92    | 0.93    | 0.92          | 0.92             |
-| **F1-Score**     | 0.92    | 0.92    | 0.92          | 0.92             |
-| **Support**      | 500     | 500     | 1000          | 1000             |
 
 
 ## References:
