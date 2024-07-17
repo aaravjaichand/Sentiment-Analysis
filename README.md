@@ -5,7 +5,7 @@
 
 #### Setup Python Environment:
 
-- Install Miniconda or Anaconda:
+- Install Miniconda or Anaconda (If not already):
   - Download and install Miniconda from [here](https://docs.conda.io/en/latest/miniconda.html) (if not already).
   - Follow the installation instructions for your operating system.
   
