@@ -1,4 +1,4 @@
-# Sentiment-Analysis
+# Sentiment-Analysis-Project
 
 ## Setup Instructions:
 - Install [Python](https://www.python.org) version 3.8 or above
