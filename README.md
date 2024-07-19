@@ -12,7 +12,7 @@
 - After installing Conda, create a new environment from `environment.yml` using `conda env create -f environment.yml`
 - Follow the instructions in your terminal carefully
 
-(If using visual studio code, make sure that you have the environment selected when using `>Python: Select Interpreter')
+(If using visual studio code, make sure that you have the environment selected when using `>Python: Select Interpreter`)
 
 That's it for setup.
 
