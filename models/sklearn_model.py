@@ -23,3 +23,5 @@ def evaluate_sklearn_model(model, X_test, y_test):
     accuracy = accuracy_score(y_test, y_pred)
     print(f"sklearn Model Accuracy: {accuracy * 100:.2f}%")
     print(classification_report(y_test, y_pred))
+
+    return accuracy

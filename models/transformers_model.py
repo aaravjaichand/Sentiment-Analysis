@@ -19,6 +19,7 @@ def evaluate_transformers_model(model, tokenizer, inputs, targets, fout):
             accuracy = np.mean(np.array(predictions) == np.array(targets))
             print(f"Transformers Model Accuracy: {accuracy * 100:.2f}%")
             print(classification_report(targets, predictions))
+            return accuracy
 
 
     if fout:

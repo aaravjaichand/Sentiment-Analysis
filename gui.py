@@ -45,9 +45,9 @@ class SentimentAnalysisApp:
         return inputs, targets
 
     def classify_single_review(self):
-        if not hasattr(self, 'inputs'):
-            messagebox.showerror("Error", "No dataset loaded.")
-            return
+        # if not hasattr(self, 'inputs'):
+        #     messagebox.showerror("Error", "No dataset loaded.")
+        #     return
         sentence = simpledialog.askstring("Input", "Enter the sentence to classify:")
         if sentence:
             tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased-finetuned-sst-2-english")
@@ -57,21 +57,34 @@ class SentimentAnalysisApp:
             self.output_label.config(text=f"Classification: {result}")
 
     def evaluate_accuracy(self):
+        self.output_label.config(text="Test")
         if not hasattr(self, 'inputs'):
             messagebox.showerror("Error", "No dataset loaded.")
             return
         
-        messagebox.showerror("Alert", "The accuracies will be displayed in the terminal.")
+        
+        
 
         X, vectorizer = preprocess_data(self.inputs)
         y = np.array(self.targets)
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
         sklearn_model = train_sklearn_model(X_train, y_train)
         sklearn_accuracy = evaluate_sklearn_model(sklearn_model, X_test, y_test)
+
+        
+ 
+        sklearn_accuracy = str(sklearn_accuracy)
+
+
         
         tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased-finetuned-sst-2-english")
         transformers_model = AutoModelForSequenceClassification.from_pretrained("distilbert-base-uncased-finetuned-sst-2-english")
         transformers_accuracy = evaluate_transformers_model(transformers_model, tokenizer, self.inputs, self.targets, False)
+
+        transformers_accuracy = str(transformers_accuracy * 100)
+
+
+        self.output_label.config(text="SK Learn Model Accuracy: " + sklearn_accuracy + "%; Transformers accuracy: " + transformers_accuracy + "%")
         
 if __name__ == "__main__":
     root = tk.Tk()
