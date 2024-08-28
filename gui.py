@@ -73,7 +73,7 @@ class SentimentAnalysisApp:
 
         
  
-        sklearn_accuracy = str(sklearn_accuracy)
+        sklearn_accuracy = str(sklearn_accuracy * 100)
 
 
         
